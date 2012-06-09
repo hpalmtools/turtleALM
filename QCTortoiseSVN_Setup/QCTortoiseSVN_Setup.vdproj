@@ -15,19 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_04F282DC4D394908BD394A8935326B1D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1CAD599AA3E345AD9787CBA3F5C85A43"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1F80FECC62F74D72AEA9A1B9AA6A90B3"
+        "MsmKey" = "8:_114A07AB1E044CC59CEA1A2A29BDA247"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -39,8 +27,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_5E1BCECE08115632714A01A6A1E291C0"
-        "OwnerKey" = "8:_D4A655ABE5467073BFF9B8F2A33937EA"
+        "MsmKey" = "8:_6FB6A475B26643238BF1EA9A06D106A8"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -51,14 +39,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_951725B1605A567C237DAFEDEA321512"
+        "OwnerKey" = "8:_A81F72AC833E4EAEAD35B0955682E47C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A81F72AC833E4EAEAD35B0955682E47C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_D4A655ABE5467073BFF9B8F2A33937EA"
-        "OwnerKey" = "8:_A81F72AC833E4EAEAD35B0955682E47C"
+        "MsmKey" = "8:_E427C18B75680A41CCD6B76A2FDB376B"
+        "OwnerKey" = "8:_951725B1605A567C237DAFEDEA321512"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -70,7 +64,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D4A655ABE5467073BFF9B8F2A33937EA"
+        "OwnerKey" = "8:_951725B1605A567C237DAFEDEA321512"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -173,50 +167,10 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_04F282DC4D394908BD394A8935326B1D"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_114A07AB1E044CC59CEA1A2A29BDA247"
             {
-            "SourcePath" = "8:..\\QCIssuePlugin\\install_banner.png"
-            "TargetName" = "8:install_banner.png"
-            "Tag" = "8:"
-            "Folder" = "8:_161ADADAFDB749739852F5AE07D7C52F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1CAD599AA3E345AD9787CBA3F5C85A43"
-            {
-            "SourcePath" = "8:..\\QCIssuePlugin\\bin\\Debug\\LICENSE.txt"
+            "SourcePath" = "8:..\\QCIssuePlugin\\LICENSE.txt"
             "TargetName" = "8:LICENSE.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_161ADADAFDB749739852F5AE07D7C52F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1F80FECC62F74D72AEA9A1B9AA6A90B3"
-            {
-            "SourcePath" = "8:..\\QCIssuePlugin\\bin\\Debug\\app.config"
-            "TargetName" = "8:app.config"
             "Tag" = "8:"
             "Folder" = "8:_161ADADAFDB749739852F5AE07D7C52F"
             "Condition" = "8:"
@@ -253,10 +207,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5E1BCECE08115632714A01A6A1E291C0"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6FB6A475B26643238BF1EA9A06D106A8"
             {
-            "SourcePath" = "8:Interop.BugTraqProvider.tlb"
-            "TargetName" = "8:Interop.BugTraqProvider.tlb"
+            "SourcePath" = "8:..\\QCIssuePlugin\\app.config"
+            "TargetName" = "8:app.config"
             "Tag" = "8:"
             "Folder" = "8:_161ADADAFDB749739852F5AE07D7C52F"
             "Condition" = "8:"
@@ -268,9 +222,9 @@
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
-            "Register" = "3:2"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_867B4A99ABD241B39851BCBED8F8888A"
@@ -293,14 +247,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D4A655ABE5467073BFF9B8F2A33937EA"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_951725B1605A567C237DAFEDEA321512"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Interop.BugTraqProvider, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_D4A655ABE5467073BFF9B8F2A33937EA"
+                    "_951725B1605A567C237DAFEDEA321512"
                     {
                     "Name" = "8:Interop.BugTraqProvider.dll"
                     "Attributes" = "3:512"
@@ -321,6 +275,26 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E427C18B75680A41CCD6B76A2FDB376B"
+            {
+            "SourcePath" = "8:Interop.BugTraqProvider.tlb"
+            "TargetName" = "8:Interop.BugTraqProvider.tlb"
+            "Tag" = "8:"
+            "Folder" = "8:_161ADADAFDB749739852F5AE07D7C52F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:2"
+            "Exclude" = "11:TRUE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -1216,7 +1190,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A81F72AC833E4EAEAD35B0955682E47C"
             {
-            "SourcePath" = "8:..\\QCIssuePlugin\\obj\\Release\\QCIssuePlugin.dll"
+            "SourcePath" = "8:..\\QCIssuePlugin\\obj\\Debug\\TurtleALM.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_161ADADAFDB749739852F5AE07D7C52F"
