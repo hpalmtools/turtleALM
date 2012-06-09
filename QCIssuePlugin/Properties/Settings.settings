@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="QCIssuePlugin.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DefectPrefix" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ALMCR</Value>
+    </Setting>
+    <Setting Name="ReqPrefix" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ALMRQ</Value>
+    </Setting>
+    <Setting Name="Verb" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Fixing</Value>
+    </Setting>
+    <Setting Name="useGUID" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="GUIDFieldName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">user-template-22</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
