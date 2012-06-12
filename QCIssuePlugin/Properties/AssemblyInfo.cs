@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("QCIssuePlugin")]
-[assembly: AssemblyDescription("An HP Quality Center Plugin for Tortoise")]
+[assembly: AssemblyDescription("An HP ALM Plugin for Tortoise")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Hewlett-Packard Company")]
 [assembly: AssemblyProduct("QCIssuePlugin")]
