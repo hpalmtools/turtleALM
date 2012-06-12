@@ -305,7 +305,7 @@ namespace QCIssuePlugin
             this.Name = "QCIssuesForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "ALM Issues.20120603.new";
+            this.Text = "ALM Issues";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QCIssuesForm_FormClosing);
             this.Load += new System.EventHandler(this.QCIssuesForm_Load);
             this.grp_QCList.ResumeLayout(false);

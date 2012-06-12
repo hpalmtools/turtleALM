@@ -21,19 +21,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_20E52D2910864DD7800FF95446959C30"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_6FB6A475B26643238BF1EA9A06D106A8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_867B4A99ABD241B39851BCBED8F8888A"
+        "MsmKey" = "8:_82E0F543BD7242319F4D5A1FC88DD54F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -131,10 +125,15 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.2.0"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
                     {
-                    "Name" = "8:Microsoft .NET Framework 2.0"
-                    "ProductCode" = "8:Microsoft.Net.Framework.2.0"
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
                     }
                 }
             }
@@ -155,13 +154,13 @@
         {
             "LaunchCondition"
             {
-                "{A06ECF26-33A3-4562-8140-9B0E340D4F24}:_D8E6CF6FFF68475185B6CB7BAA823F27"
+                "{A06ECF26-33A3-4562-8140-9B0E340D4F24}:_4BA87169448C4A8CAE99D7ECDCCBE2E4"
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v4.0"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.0,Profile=Client"
                 "AllowLaterVersions" = "11:FALSE"
-                "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=9832"
+                "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=131000"
                 }
             }
         }
@@ -171,26 +170,6 @@
             {
             "SourcePath" = "8:..\\QCIssuePlugin\\LICENSE.txt"
             "TargetName" = "8:LICENSE.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_161ADADAFDB749739852F5AE07D7C52F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_20E52D2910864DD7800FF95446959C30"
-            {
-            "SourcePath" = "8:..\\QCIssuePlugin\\bug-48x48.ico"
-            "TargetName" = "8:bug-48x48.ico"
             "Tag" = "8:"
             "Folder" = "8:_161ADADAFDB749739852F5AE07D7C52F"
             "Condition" = "8:"
@@ -227,7 +206,7 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_867B4A99ABD241B39851BCBED8F8888A"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_82E0F543BD7242319F4D5A1FC88DD54F"
             {
             "SourcePath" = "8:..\\QCIssuePlugin\\install_banner.jpg"
             "TargetName" = "8:install_banner.jpg"
@@ -243,7 +222,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
@@ -294,7 +273,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:2"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -355,7 +334,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:TurtleALM"
         "ProductCode" = "8:{803E609D-463C-4644-B9B9-CB77C9FD5788}"
-        "PackageCode" = "8:{E67F361D-C66B-4C11-ABB7-E2937EF517AB}"
+        "PackageCode" = "8:{A738151D-4E5C-464B-B8ED-B211DCABA55B}"
         "UpgradeCode" = "8:{CA1D5322-C7E5-4897-9638-117F1CF0273F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -372,7 +351,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:HP QC/ALM - Tortoise SVN/GIT/HG integration"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_20E52D2910864DD7800FF95446959C30"
+        "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -807,7 +786,7 @@
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
                             "Setting" = "3:2"
-                            "Value" = "8:_867B4A99ABD241B39851BCBED8F8888A"
+                            "Value" = "8:_82E0F543BD7242319F4D5A1FC88DD54F"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -830,7 +809,7 @@
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
                             "Setting" = "3:2"
-                            "Value" = "8:_867B4A99ABD241B39851BCBED8F8888A"
+                            "Value" = "8:_82E0F543BD7242319F4D5A1FC88DD54F"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "CopyrightWarning"
@@ -879,7 +858,7 @@
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
                             "Setting" = "3:2"
-                            "Value" = "8:_867B4A99ABD241B39851BCBED8F8888A"
+                            "Value" = "8:_82E0F543BD7242319F4D5A1FC88DD54F"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -923,7 +902,7 @@
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
                             "Setting" = "3:2"
-                            "Value" = "8:_867B4A99ABD241B39851BCBED8F8888A"
+                            "Value" = "8:_82E0F543BD7242319F4D5A1FC88DD54F"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "ShowProgress"
@@ -968,7 +947,7 @@
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
                             "Setting" = "3:2"
-                            "Value" = "8:_867B4A99ABD241B39851BCBED8F8888A"
+                            "Value" = "8:_82E0F543BD7242319F4D5A1FC88DD54F"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -1000,7 +979,7 @@
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
                             "Setting" = "3:2"
-                            "Value" = "8:_867B4A99ABD241B39851BCBED8F8888A"
+                            "Value" = "8:_82E0F543BD7242319F4D5A1FC88DD54F"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "ShowProgress"
@@ -1045,7 +1024,7 @@
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
                             "Setting" = "3:2"
-                            "Value" = "8:_867B4A99ABD241B39851BCBED8F8888A"
+                            "Value" = "8:_82E0F543BD7242319F4D5A1FC88DD54F"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "UpdateText"
@@ -1090,7 +1069,7 @@
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
                             "Setting" = "3:2"
-                            "Value" = "8:_867B4A99ABD241B39851BCBED8F8888A"
+                            "Value" = "8:_82E0F543BD7242319F4D5A1FC88DD54F"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "InstallAllUsersVisible"
@@ -1126,7 +1105,7 @@
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
                             "Setting" = "3:2"
-                            "Value" = "8:_867B4A99ABD241B39851BCBED8F8888A"
+                            "Value" = "8:_82E0F543BD7242319F4D5A1FC88DD54F"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "CopyrightWarning"
@@ -1175,7 +1154,7 @@
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
                             "Setting" = "3:2"
-                            "Value" = "8:_867B4A99ABD241B39851BCBED8F8888A"
+                            "Value" = "8:_82E0F543BD7242319F4D5A1FC88DD54F"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -1190,7 +1169,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A81F72AC833E4EAEAD35B0955682E47C"
             {
-            "SourcePath" = "8:..\\QCIssuePlugin\\obj\\Debug\\TurtleALM.dll"
+            "SourcePath" = "8:..\\QCIssuePlugin\\obj\\Release\\TurtleALM.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_161ADADAFDB749739852F5AE07D7C52F"

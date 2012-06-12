@@ -93,8 +93,8 @@ namespace QCIssuePlugin
         private void QCIssuesForm_Load(object sender, EventArgs e)
         {
             // Form title
-            this.Text = "Select QC " + QCPlugin.QCITEMNAMEPLURAL;
-            this.grp_QCList.Text = "List of QC " + QCPlugin.QCITEMNAMEPLURAL;
+            this.Text = "Select ALM " + QCPlugin.QCITEMNAMEPLURAL;
+            this.grp_QCList.Text = "List of ALM " + QCPlugin.QCITEMNAMEPLURAL;
 
             // Restore Form size as saved in registry
             string strWinSize = RegistryGet("WindowSize"); 
@@ -411,7 +411,8 @@ namespace QCIssuePlugin
             string strValue = "";
             regkey = Registry.CurrentUser.OpenSubKey(@"Software\TortoiseQCIssuePlugin");
 
-            strValue = (string)regkey.GetValue(strKeyName, "");
+            if (!(regkey == null)) 
+                strValue = (string)regkey.GetValue(strKeyName, "");
             return strValue;
         }
 
