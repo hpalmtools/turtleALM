@@ -242,21 +242,27 @@ namespace HP.AlmRestClient
 
 		public void CloseSession()
 		{
-			// /qcbin/rest/site-session DELETE
-			Uri closeSessionUri;
-			if (!Uri.TryCreate(new Uri(_serverUrl), "rest/site-session", out closeSessionUri))
-			{
-				throw new ArgumentException("Invalid URI: " + _serverUrl);
-			}
+            try
+            {
+                Uri closeSessionUri;
+                if (!Uri.TryCreate(new Uri(_serverUrl), "rest/site-session", out closeSessionUri))
+                {
+                    throw new ArgumentException("Invalid URI: " + _serverUrl);
+                }
 
-			HttpWebRequest req = (HttpWebRequest)WebRequest.Create(closeSessionUri);
-			req.Method = "DELETE";
-			req.CookieContainer = new CookieContainer();
-			req.CookieContainer.Add(_cookies);
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create(closeSessionUri);
+                req.Method = "DELETE";
+                req.CookieContainer = new CookieContainer();
+                req.CookieContainer.Add(_cookies);
 
-			HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
-            _sessionOpened = false;
-			resp.Close();
+                HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+                _sessionOpened = false;
+                resp.Close();
+            }
+            catch {
+                // Just ignore, we are just trying to disconnect
+                // If session is not opened anymore, we may get a 403
+            }
 		}
 
 		public bool OpenSession()
@@ -288,20 +294,28 @@ namespace HP.AlmRestClient
 
 		public void Unauthenticate()
 		{
-			Uri logoutUri;
-			if (!Uri.TryCreate(new Uri(_serverUrl), "authentication-point/logout", out logoutUri))
-			{
-				throw new ArgumentException("Invalid URI: " + _serverUrl);
-			}
+            try
+            {
+                Uri logoutUri;
+                if (!Uri.TryCreate(new Uri(_serverUrl), "authentication-point/logout", out logoutUri))
+                {
+                    throw new ArgumentException("Invalid URI: " + _serverUrl);
+                }
 
-			HttpWebRequest req = (HttpWebRequest)WebRequest.Create(logoutUri);
-			req.Method = "GET";
-			req.CookieContainer = new CookieContainer();
-			req.CookieContainer.Add(_cookies);
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create(logoutUri);
+                req.Method = "GET";
+                req.CookieContainer = new CookieContainer();
+                req.CookieContainer.Add(_cookies);
 
-			HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
-			resp.Close();
-            _Authenticated = false;
+                HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+                resp.Close();
+                _Authenticated = false;
+            }
+            catch
+            {
+                // Just ignore, we are just trying to disconnect
+                // If session is not opened anymore, we may get a 403
+            }
 		}
 
 		public XElement Query(string queryString)
