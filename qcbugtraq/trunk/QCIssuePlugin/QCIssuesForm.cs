@@ -40,6 +40,10 @@ namespace QCIssuePlugin
         private readonly List<TicketItem> _ticketsAffected = new List<TicketItem>();
         private ListViewColumnSorter lvwColumnSorter;
 
+        const string VERSION = "20120618";
+        const string DOWNLOAD_LINK = "https://sourceforge.net/projects/almtools/files/TurtleALM/";
+        const string VERSION_URI = "http://almtools.sourceforge.net/turtlealm-latest.txt";
+
         HP.AlmRestClient.AlmRestConnection _almc;
         
         public QCIssuesForm(IEnumerable<TicketItem> tickets)
@@ -92,6 +96,27 @@ namespace QCIssuePlugin
             this.Text = "Select ALM " + QCPlugin.QCITEMNAMEPLURAL;
             this.grp_QCList.Text = "List of ALM " + QCPlugin.QCITEMNAMEPLURAL;
 
+            if (Properties.Settings.Default.CheckForUpdate)
+            {
+                string strLastCheck = RegistryGet("LastVersionCheck");
+                if (String.Compare(strLastCheck, DateTime.Now.AddDays(-7).ToString("yyyyMMdd")) < 0)
+                {
+                    // We checked more than 7 days ago: check again
+                    string strVersion = getLatestVersion(VERSION_URI);
+                    RegistrySet("LastVersionCheck", DateTime.Now.ToString("yyyyMMdd"));
+
+                    if ((!strVersion.Contains("ERROR")) && (String.Compare(strVersion, VERSION) > 0))
+                    {
+                        if ((MessageBox.Show("There is a new version of TurtleALM.\r\nCurrent version: " + VERSION +
+                            ". Latest version: " + strVersion +
+                            ".\r\nDo you want to download the latest version?",
+                            "Version outdated", MessageBoxButtons.YesNo) == DialogResult.Yes))
+                        {
+                            System.Diagnostics.Process.Start(DOWNLOAD_LINK);
+                        }
+                    }
+                }
+            }
             // Restore Form size as saved in registry
             string strWinSize = RegistryGet("WindowSize"); 
             if (strWinSize != "")
@@ -164,6 +189,32 @@ namespace QCIssuePlugin
             }
 
 
+        }
+
+        private string getLatestVersion(string strUrl)
+        {
+            // Check if an update of the tool is available
+            Cursor.Current = Cursors.WaitCursor;
+            System.Net.WebClient wc = new System.Net.WebClient();
+            string myVersion;
+            try
+            {
+                wc.Credentials = System.Net.CredentialCache.DefaultCredentials;
+                System.IO.Stream str;
+                str = wc.OpenRead(strUrl);
+                System.IO.StreamReader sr = new System.IO.StreamReader(str);
+                myVersion = sr.ReadToEnd();
+                sr.Close();
+                return myVersion;
+            }
+            catch (Exception ex)
+            {
+                return "ERROR: " + ex.Message.ToString();
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
         }
 
         private void bt_Ok_Click(object sender, EventArgs e)

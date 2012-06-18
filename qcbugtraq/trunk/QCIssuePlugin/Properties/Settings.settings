@@ -17,5 +17,8 @@
     <Setting Name="GUIDFieldName" Type="System.String" Scope="User">
       <Value Profile="(Default)">user-template-22</Value>
     </Setting>
+    <Setting Name="CheckForUpdate" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
