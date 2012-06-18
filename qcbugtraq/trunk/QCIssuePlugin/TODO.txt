@@ -1,0 +1,6 @@
+﻿To do (ordered)
+- Identify TurtleALM connections in ALM site admin by changing client-type
+- Auto update by checking http://almtools.sourceforge.net/turtlealm-latest.txt
+- Warn if authentication is not over https as authentication is HTTP Basic
+- If domain/project/user/pass populated: auth and get the list immediately
+- If not authenticated, don't do anything

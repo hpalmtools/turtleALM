@@ -1,7 +1,3 @@
-//TODO
-// - If domain/project/user/pass populated: auth and get the list immediately
-// - If not authenticated, don't do anything
-// - 
 // ALM Tools: QCBugTraq: a plugin for TortoiseSVN/GIT to write quickly meaningful
 //                       commit messages
 // Copyright (C) 2012 Hewlett Packard Company
