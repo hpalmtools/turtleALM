@@ -39,6 +39,7 @@ namespace HP.AlmRestClient
 		private  string _queryBase;
 		private readonly int _queryPageSize;
 		private int _totalQueries = 0;
+        private const string CLIENT_NAME = "REST client: TurtleALM";
 
 		private CookieCollection _cookies;
 
@@ -276,11 +277,19 @@ namespace HP.AlmRestClient
 
 			HttpWebRequest req = (HttpWebRequest)WebRequest.Create(openSessionUri);
 			req.Method = "POST";
-			req.ContentLength = 0;
 			CookieContainer cookies = new CookieContainer();
 			req.CookieContainer = cookies;
 			req.CookieContainer.Add(_cookies);
+            req.ContentType = "application/xml"; 
 
+            // Custom Client Type
+            string sessionParams = "<session-parameters><client-type>" + CLIENT_NAME + "</client-type></session-parameters>";
+            ASCIIEncoding enc = new ASCIIEncoding();
+            byte[] bSessionParams = enc.GetBytes(sessionParams);
+            req.ContentLength = bSessionParams.Length;
+            using (Stream reqStream = req.GetRequestStream())
+                reqStream.Write(bSessionParams, 0, bSessionParams.Length);
+           
 			HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
 
             if (resp.StatusCode == HttpStatusCode.OK)
