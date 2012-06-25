@@ -1,8 +1,11 @@
 ﻿TO DO (ordered)
+- Check QC/ALM version: must be 11 or later, with REST API support
+
 - Warn if authentication is not over https as authentication is HTTP Basic
 - If domain/project/user/pass populated: auth and get the list immediately
 - If not authenticated, don't do anything
 
 DONE
+- Create 32bits installer
 - Identify TurtleALM connections in ALM site admin by changing client-type
 - Auto update by checking http://almtools.sourceforge.net/turtlealm-latest.txt
