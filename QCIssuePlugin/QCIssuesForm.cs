@@ -81,6 +81,7 @@ namespace QCIssuePlugin
             lvi.SubItems.Add(ticket.Status);
             lvi.SubItems.Add(ticket.Summary);
             lvi.SubItems.Add(ticket.LastModified);
+            lvi.SubItems.Add(ticket.TargetRel);
             lvi.SubItems.Add(ticket.Owner);
             lvi.Group = lv_QCIssues.Groups[ticket.Context];
             lvi.Tag = ticket;
@@ -131,6 +132,7 @@ namespace QCIssuePlugin
             lv_QCIssues.Columns.Add("Status", 50);
             lv_QCIssues.Columns.Add("Summary", 200);
             lv_QCIssues.Columns.Add("Last Modified", 50);
+            lv_QCIssues.Columns.Add("Target Release", 80);
             lv_QCIssues.Columns.Add("Owner", 50);
 
             bt_Login.Enabled = false;
@@ -228,6 +230,9 @@ namespace QCIssuePlugin
             }
         }
 
+        /// <summary>
+        /// Retrieve ALM items using REST API
+        /// </summary>
         private void FetchItems()
         {
             try
@@ -246,16 +251,32 @@ namespace QCIssuePlugin
 
                 XElement xQuery;
                 if (Properties.Settings.Default.useGUID) {
-                    xQuery = _almc.Query(@"defects?fields=id,name,status,summary,severity,owner,last-modified," +
+                    xQuery = _almc.Query(@"defects?fields=id,name,status,summary,severity,owner,target-rel,last-modified," +
                         Properties.Settings.Default.GUIDFieldName + "&query={owner['" +
                         tb_LoginName.Text + "']; status[NOT Closed]}");
                 }
                 else
                 {
-                    xQuery = _almc.Query(@"defects?fields=id,name,status,summary,severity,owner,last-modified&query={owner['" +
+                    xQuery = _almc.Query(@"defects?fields=id,name,status,summary,severity,owner,target-rel,last-modified&query={owner['" +
                         tb_LoginName.Text + "']; status[NOT Closed]}");
                 }
                 
+
+                // Release dictionary: key: release ID, value: release name
+                Dictionary<string, string> relDic = new Dictionary<string, string>();
+                relDic.Add("", "");
+                foreach (XElement xbug in xQuery.Nodes())
+                {
+                    HP.AlmRestClient.Entity bug = new HP.AlmRestClient.Entity(xbug);
+                    string target_rel = bug.GetFieldValue("target-rel");
+                    if ((target_rel != "") && (!relDic.ContainsKey(target_rel)))
+                    {
+                        XElement xQueryRel;
+                        xQueryRel = _almc.Query(@"releases/" + target_rel);
+                        HP.AlmRestClient.Entity rel = new HP.AlmRestClient.Entity(xQueryRel);
+                        relDic.Add(target_rel, rel.GetFieldValue("name"));
+                    }
+                }
 
                 foreach (XElement xbug in xQuery.Nodes())
                 {
@@ -265,6 +286,7 @@ namespace QCIssuePlugin
                         bug.GetFieldValue("status"),
                         bug.GetFieldValue("name"),
                         bug.GetFieldValue("owner"),
+                        relDic[bug.GetFieldValue("target-rel")],
                         bug.GetFieldValue("last-modified"),
                         Properties.Settings.Default.useGUID ? bug.GetFieldValue(Properties.Settings.Default.GUIDFieldName) : ""
                         ));

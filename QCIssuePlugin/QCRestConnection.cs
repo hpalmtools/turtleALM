@@ -384,7 +384,11 @@ namespace HP.AlmRestClient
 
 				if (numPages == 0) // Calculate numPages and pageSize.
 				{
-					int totalResults = Int32.Parse(responseXml.Attribute("TotalResults").Value);
+                    int totalResults = 0;
+                    if (responseXml.Attribute("TotalResults") != null)
+                        Int32.TryParse(responseXml.Attribute("TotalResults").Value, out totalResults);
+                    else
+                        totalResults = 0;
 					int entityCount = responseXml.Elements("Entity").Count();
 					if (entityCount < totalResults)
 					{

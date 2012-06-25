@@ -31,19 +31,21 @@ namespace QCIssuePlugin
         private readonly int _ticketNumber;
         private readonly string _ticketStatus;
         private readonly string _ticketSummary;
-        private readonly string _ticketOwner;
         private readonly string _ticketLastModified;
+        private readonly string _ticketTargetRel;
+        private readonly string _ticketOwner;
         private readonly string _ticketGUID;
 
 
-        public TicketItem(string ticketContext, int ticketNumber, string ticketStatus, string ticketSummary, string ticketOwner, string ticketLastModified, string ticketGUID)
+        public TicketItem(string ticketContext, int ticketNumber, string ticketStatus, string ticketSummary, string ticketOwner, string ticketTargetRel, string ticketLastModified, string ticketGUID)
         {
             _ticketContext = ticketContext;
             _ticketNumber = ticketNumber;
             _ticketStatus = ticketStatus;
             _ticketSummary = ticketSummary;
-            _ticketOwner = ticketOwner;
+            _ticketTargetRel = ticketTargetRel;
             _ticketLastModified = ticketLastModified;
+            _ticketOwner = ticketOwner;
             _ticketGUID = ticketGUID;
         }
 
@@ -67,14 +69,19 @@ namespace QCIssuePlugin
             get { return _ticketSummary; }
         }
 
-        public string Owner
-        {
-            get { return _ticketOwner; }
-        }
-
         public string LastModified
         {
             get { return _ticketLastModified; }
+        }
+
+        public string TargetRel
+        {
+            get { return _ticketTargetRel; }
+        }
+
+        public string Owner
+        {
+            get { return _ticketOwner; }
         }
 
         public string GUID
