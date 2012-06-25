@@ -77,7 +77,7 @@ namespace QCIssuePlugin
             this.lv_QCIssues.Location = new System.Drawing.Point(3, 16);
             this.lv_QCIssues.Name = "lv_QCIssues";
             this.lv_QCIssues.Size = new System.Drawing.Size(820, 298);
-            this.lv_QCIssues.TabIndex = 0;
+            this.lv_QCIssues.TabIndex = 10;
             this.lv_QCIssues.UseCompatibleStateImageBehavior = false;
             this.lv_QCIssues.View = System.Windows.Forms.View.Details;
             this.lv_QCIssues.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lv_QCIssues_ColumnClick);
@@ -113,7 +113,7 @@ namespace QCIssuePlugin
             this.cb_QCURL.Location = new System.Drawing.Point(79, 13);
             this.cb_QCURL.Name = "cb_QCURL";
             this.cb_QCURL.Size = new System.Drawing.Size(243, 21);
-            this.cb_QCURL.TabIndex = 27;
+            this.cb_QCURL.TabIndex = 1;
             this.toolTip1.SetToolTip(this.cb_QCURL, "http[s]://[QCHost]:[port]/qcbin");
             // 
             // label5
@@ -131,7 +131,7 @@ namespace QCIssuePlugin
             this.cb_Project.Location = new System.Drawing.Point(386, 43);
             this.cb_Project.Name = "cb_Project";
             this.cb_Project.Size = new System.Drawing.Size(242, 21);
-            this.cb_Project.TabIndex = 25;
+            this.cb_Project.TabIndex = 8;
             this.cb_Project.TextChanged += new System.EventHandler(this.cb_Project_TextChanged);
             // 
             // cb_Domain
@@ -140,7 +140,7 @@ namespace QCIssuePlugin
             this.cb_Domain.Location = new System.Drawing.Point(385, 13);
             this.cb_Domain.Name = "cb_Domain";
             this.cb_Domain.Size = new System.Drawing.Size(243, 21);
-            this.cb_Domain.TabIndex = 24;
+            this.cb_Domain.TabIndex = 7;
             this.cb_Domain.TextChanged += new System.EventHandler(this.cb_Domain_TextChanged);
             // 
             // bt_Login
@@ -148,7 +148,7 @@ namespace QCIssuePlugin
             this.bt_Login.Location = new System.Drawing.Point(385, 113);
             this.bt_Login.Name = "bt_Login";
             this.bt_Login.Size = new System.Drawing.Size(103, 24);
-            this.bt_Login.TabIndex = 23;
+            this.bt_Login.TabIndex = 9;
             this.bt_Login.Text = "Retrieve items";
             this.toolTip1.SetToolTip(this.bt_Login, "Login to the QC project; You may login to multiple projects to select CRs from mu" +
         "ltiple QC projects.");
@@ -160,7 +160,7 @@ namespace QCIssuePlugin
             this.bt_Authenticate.Location = new System.Drawing.Point(79, 115);
             this.bt_Authenticate.Name = "bt_Authenticate";
             this.bt_Authenticate.Size = new System.Drawing.Size(105, 22);
-            this.bt_Authenticate.TabIndex = 22;
+            this.bt_Authenticate.TabIndex = 6;
             this.bt_Authenticate.Text = "Authenticate";
             this.bt_Authenticate.UseVisualStyleBackColor = true;
             this.bt_Authenticate.Click += new System.EventHandler(this.bt_Authenticate_Click);
@@ -171,14 +171,14 @@ namespace QCIssuePlugin
             this.tb_Password.Name = "tb_Password";
             this.tb_Password.PasswordChar = '*';
             this.tb_Password.Size = new System.Drawing.Size(243, 20);
-            this.tb_Password.TabIndex = 21;
+            this.tb_Password.TabIndex = 3;
             // 
             // tb_LoginName
             // 
             this.tb_LoginName.Location = new System.Drawing.Point(79, 40);
             this.tb_LoginName.Name = "tb_LoginName";
             this.tb_LoginName.Size = new System.Drawing.Size(243, 20);
-            this.tb_LoginName.TabIndex = 20;
+            this.tb_LoginName.TabIndex = 2;
             // 
             // label4
             // 
@@ -204,7 +204,7 @@ namespace QCIssuePlugin
             this.cb_SaveCredentials.Location = new System.Drawing.Point(79, 94);
             this.cb_SaveCredentials.Name = "cb_SaveCredentials";
             this.cb_SaveCredentials.Size = new System.Drawing.Size(105, 17);
-            this.cb_SaveCredentials.TabIndex = 17;
+            this.cb_SaveCredentials.TabIndex = 4;
             this.cb_SaveCredentials.Text = "Save credentials";
             this.toolTip1.SetToolTip(this.cb_SaveCredentials, resources.GetString("cb_SaveCredentials.ToolTip"));
             this.cb_SaveCredentials.UseVisualStyleBackColor = true;
@@ -259,7 +259,7 @@ namespace QCIssuePlugin
             this.ckb_AuthAndLogin.Location = new System.Drawing.Point(190, 94);
             this.ckb_AuthAndLogin.Name = "ckb_AuthAndLogin";
             this.ckb_AuthAndLogin.Size = new System.Drawing.Size(136, 17);
-            this.ckb_AuthAndLogin.TabIndex = 28;
+            this.ckb_AuthAndLogin.TabIndex = 5;
             this.ckb_AuthAndLogin.Text = "Authenticate and Login";
             this.toolTip1.SetToolTip(this.ckb_AuthAndLogin, "Select to authenticate and login to the last used QC project in one click.");
             this.ckb_AuthAndLogin.UseVisualStyleBackColor = true;

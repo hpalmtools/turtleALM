@@ -299,6 +299,7 @@ namespace QCIssuePlugin
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString(), "Error while fetching items");
+                bt_Login.Enabled = true;
             }
             finally
             {
@@ -448,8 +449,6 @@ namespace QCIssuePlugin
                 _almc.Domain = cb_Domain.Text;
 
                 
-                // ***************************
-
                 // Also login if asked and Domain/project available in the registry
                 if (ckb_AuthAndLogin.Checked) 
                 {
@@ -464,7 +463,11 @@ namespace QCIssuePlugin
             catch (Exception ex)
             {
                 Cursor.Current = Cursors.Default;
-                MessageBox.Show(ex.Message.ToString(), "Error: authenticate with ALM");
+                bt_Authenticate.Enabled = true;
+                if (ex.Message.Contains("500"))
+                    MessageBox.Show(ex.Message.ToString() + " - incorrect user or password?", "Error: authenticate with ALM");
+                else
+                    MessageBox.Show(ex.Message.ToString(), "Error: authenticate with ALM");
             }
 
         }
@@ -478,7 +481,7 @@ namespace QCIssuePlugin
         {
             RegistryKey regkey;
             string strValue = "";
-            regkey = Registry.CurrentUser.OpenSubKey(@"Software\TortoiseQCIssuePlugin");
+            regkey = Registry.CurrentUser.OpenSubKey(@"Software\TurtleALM");
 
             if (!(regkey == null)) 
                 strValue = (string)regkey.GetValue(strKeyName, "");
@@ -488,16 +491,16 @@ namespace QCIssuePlugin
         private void RegistrySet(string strKeyName, string strKeyValue)
         {
             RegistryKey regkey;
-            regkey = Registry.CurrentUser.CreateSubKey(@"Software\TortoiseQCIssuePlugin");
+            regkey = Registry.CurrentUser.CreateSubKey(@"Software\TurtleALM");
             regkey.SetValue(strKeyName, strKeyValue);
         }
 
         private void RegistryDelete(string strKeyName)
         {
             RegistryKey regkey;
-            regkey = Registry.CurrentUser.OpenSubKey(@"Software\TortoiseQCIssuePlugin\" + strKeyName);
+            regkey = Registry.CurrentUser.OpenSubKey(@"Software\TurtleALM\" + strKeyName);
             if (!(regkey == null))
-                Registry.CurrentUser.DeleteSubKey(@"Software\TortoiseQCIssuePlugin\" + strKeyName);
+                Registry.CurrentUser.DeleteSubKey(@"Software\TurtleALM\" + strKeyName);
         }
 
         private void bt_RetrieveItems_Click(object sender, EventArgs e)
