@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QCIssuePlugin", "QCIssuePlugin\QCIssuePlugin.csproj", "{127EBCC0-6461-4AFE-8B3B-9F2D013CF2BB}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "QCBugtraq_Setup", "QCTortoiseSVN_Setup\QCTortoiseSVN_Setup.vdproj", "{05F0D058-47B8-4AC1-A26C-6BDAE6E5E82C}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TurtleALM_Setup_x64", "TurtleALM_Setup_x64\TurtleALM_Setup_x64.vdproj", "{05F0D058-47B8-4AC1-A26C-6BDAE6E5E82C}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TurtleALM_Setup_x32", "TurtleALM_Setup_x32\TurtleALM_Setup_x32.vdproj", "{E20CCEDA-B4B3-4E30-BFBD-F15B8EA795CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +21,9 @@ Global
 		{05F0D058-47B8-4AC1-A26C-6BDAE6E5E82C}.Debug|Any CPU.Build.0 = Debug
 		{05F0D058-47B8-4AC1-A26C-6BDAE6E5E82C}.Release|Any CPU.ActiveCfg = Release
 		{05F0D058-47B8-4AC1-A26C-6BDAE6E5E82C}.Release|Any CPU.Build.0 = Release
+		{E20CCEDA-B4B3-4E30-BFBD-F15B8EA795CE}.Debug|Any CPU.ActiveCfg = Debug
+		{E20CCEDA-B4B3-4E30-BFBD-F15B8EA795CE}.Release|Any CPU.ActiveCfg = Release
+		{E20CCEDA-B4B3-4E30-BFBD-F15B8EA795CE}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -40,7 +40,7 @@ namespace QCIssuePlugin
         private readonly List<TicketItem> _ticketsAffected = new List<TicketItem>();
         private ListViewColumnSorter lvwColumnSorter;
 
-        const string VERSION = "20120618";
+        const string VERSION = "20120625";
         const string DOWNLOAD_LINK = "https://sourceforge.net/projects/almtools/files/TurtleALM/";
         const string VERSION_URI = "http://almtools.sourceforge.net/turtlealm-latest.txt";
 
@@ -442,7 +442,7 @@ namespace QCIssuePlugin
             catch (Exception ex)
             {
                 Cursor.Current = Cursors.Default;
-                MessageBox.Show(ex.Message.ToString(), "Error: authenticate with QC");
+                MessageBox.Show(ex.Message.ToString(), "Error: authenticate with ALM");
             }
 
         }
@@ -472,7 +472,10 @@ namespace QCIssuePlugin
 
         private void RegistryDelete(string strKeyName)
         {
-            Registry.CurrentUser.DeleteSubKey(@"Software\TortoiseQCIssuePlugin\" + strKeyName);
+            RegistryKey regkey;
+            regkey = Registry.CurrentUser.OpenSubKey(@"Software\TortoiseQCIssuePlugin\" + strKeyName);
+            if (!(regkey == null))
+                Registry.CurrentUser.DeleteSubKey(@"Software\TortoiseQCIssuePlugin\" + strKeyName);
         }
 
         private void bt_RetrieveItems_Click(object sender, EventArgs e)
