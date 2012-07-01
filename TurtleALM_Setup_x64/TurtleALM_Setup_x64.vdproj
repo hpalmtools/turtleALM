@@ -21,12 +21,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_6FB6A475B26643238BF1EA9A06D106A8"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_82E0F543BD7242319F4D5A1FC88DD54F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -186,26 +180,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6FB6A475B26643238BF1EA9A06D106A8"
-            {
-            "SourcePath" = "8:..\\QCIssuePlugin\\app.config"
-            "TargetName" = "8:app.config"
-            "Tag" = "8:"
-            "Folder" = "8:_161ADADAFDB749739852F5AE07D7C52F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_82E0F543BD7242319F4D5A1FC88DD54F"
             {
             "SourcePath" = "8:..\\QCIssuePlugin\\install_banner.jpg"
@@ -334,7 +308,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:TurtleALM"
         "ProductCode" = "8:{FB79D007-95E5-47C3-BB28-6B09B78C5F44}"
-        "PackageCode" = "8:{65F52535-950E-4888-AA6D-77136B9B31CB}"
+        "PackageCode" = "8:{A6FEDDB8-F948-46D8-B64B-7AFAFB246204}"
         "UpgradeCode" = "8:{CA1D5322-C7E5-4897-9638-117F1CF0273F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1169,7 +1143,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A81F72AC833E4EAEAD35B0955682E47C"
             {
-            "SourcePath" = "8:..\\QCIssuePlugin\\obj\\Debug\\TurtleALM.dll"
+            "SourcePath" = "8:..\\QCIssuePlugin\\obj\\Release\\TurtleALM.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_161ADADAFDB749739852F5AE07D7C52F"

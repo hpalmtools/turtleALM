@@ -66,18 +66,18 @@ namespace QCIssuePlugin
 
                 foreach (TicketItem ticket in form.TicketsFixed)
                 {
-                    if (Properties.Settings.Default.useGUID)
+                    if (form._SettingUseGUID)
                     {
                         result.AppendFormat("{0} {1} - {2}",
-                            Properties.Settings.Default.Verb,
+                            form._SettingVerb,
                             ticket.GUID,
                             ticket.Summary);
                     }
                     else
                     {
                         result.AppendFormat("{0} {1}:{2}:{3} - {4}",
-                            Properties.Settings.Default.Verb,
-                            Properties.Settings.Default.DefectPrefix,
+                            form._SettingVerb,
+                            form._SettingDefectPrefix,
                             ticket.Context,
                             ticket.Number,
                             ticket.Summary);
