@@ -122,6 +122,8 @@ namespace HP.AlmRestClient
 			}
 
 			HttpWebRequest req = (HttpWebRequest)WebRequest.Create(authenticationUri);
+            //WebProxy proxy = new WebProxy("http://127.0.0.1:8888/");
+            //req.Proxy = proxy;
 			req.Method = "GET";
 			req.PreAuthenticate = true;
 			req.Headers["Authorization"] = credEncodedString;

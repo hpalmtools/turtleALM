@@ -40,11 +40,22 @@ namespace QCIssuePlugin
         private readonly List<TicketItem> _ticketsAffected = new List<TicketItem>();
         private ListViewColumnSorter lvwColumnSorter;
 
-        const string VERSION = "20120625";
+        const string VERSION = "20120701";
         const string DOWNLOAD_LINK = "https://sourceforge.net/projects/almtools/files/TurtleALM/";
         const string VERSION_URI = "http://almtools.sourceforge.net/turtlealm-latest.txt";
 
         HP.AlmRestClient.AlmRestConnection _almc;
+
+        private string _query = "";
+
+        // All default settings
+        public string _SettingDefectPrefix = "ALMCR";
+        public string _SettingReqPrefix = "ALMRQ";
+        public string _SettingVerb = "Fixing";
+        public bool _SettingUseGUID = false;
+        public string _SettingGUIDDefectField = "user-template-04";
+        public string _SettingGUIDReqField = "user-template-05";
+        public bool _SettingCheckForUpdate = true;
         
         public QCIssuesForm(IEnumerable<TicketItem> tickets)
         {
@@ -74,7 +85,7 @@ namespace QCIssuePlugin
             // Add a ticket with all its attributes
             ListViewItem lvi = new ListViewItem();
             lvi.Text = "";
-            if (Properties.Settings.Default.useGUID)
+            if (_SettingUseGUID)
                 lvi.SubItems.Add(ticket.GUID);
             else
                 lvi.SubItems.Add(ticket.Number.ToString());
@@ -97,7 +108,7 @@ namespace QCIssuePlugin
             this.Text = "Select ALM " + QCPlugin.QCITEMNAMEPLURAL;
             this.grp_QCList.Text = "List of ALM " + QCPlugin.QCITEMNAMEPLURAL;
 
-            if (Properties.Settings.Default.CheckForUpdate)
+            if (_SettingCheckForUpdate)
             {
                 string strLastCheck = RegistryGet("LastVersionCheck");
                 if (String.Compare(strLastCheck, DateTime.Now.AddDays(-7).ToString("yyyyMMdd")) < 0)
@@ -190,6 +201,43 @@ namespace QCIssuePlugin
                 ckb_AuthAndLogin.Checked = false;
             }
 
+            // Settings - if anything in the registry, get it - otherwise write in registry
+            if (RegistryGet("DefectPrefix") != "")
+                _SettingDefectPrefix = RegistryGet("DefectPrefix");
+            else
+                RegistrySet("DefectPrefix", _SettingDefectPrefix);
+
+            if (RegistryGet("ReqPrefix") != "")
+                _SettingReqPrefix = RegistryGet("ReqPrefix");
+            else
+                RegistrySet("ReqPrefix", _SettingReqPrefix);
+
+            if (RegistryGet("Verb") != "")
+                _SettingVerb = RegistryGet("Verb");
+            else
+                RegistrySet("Verb", _SettingVerb);
+
+            if (RegistryGet("UseGUID") != "")
+                _SettingUseGUID = bool.Parse(RegistryGet("UseGUID"));
+            else
+                RegistrySet("UseGUID", _SettingUseGUID.ToString());
+
+            if (RegistryGet("GUIDDefectField") != "")
+                _SettingGUIDDefectField = RegistryGet("GUIDDefectField");
+            else
+                RegistrySet("GUIDDefectField", _SettingGUIDDefectField);
+
+            if (RegistryGet("GUIDReqField") != "")
+                _SettingGUIDReqField = RegistryGet("GUIDReqField");
+            else
+                RegistrySet("GUIDReqField", _SettingGUIDReqField);
+
+            if (RegistryGet("CheckForUpdate") != "")
+                _SettingCheckForUpdate = bool.Parse(RegistryGet("CheckForUpdate"));
+            else
+                RegistrySet("CheckForUpdate", _SettingCheckForUpdate.ToString());
+
+            _query = QueryFromDropDown(cb_QCFilter.Text);
 
         }
 
@@ -250,15 +298,13 @@ namespace QCIssuePlugin
                     _almc.OpenSession();
 
                 XElement xQuery;
-                if (Properties.Settings.Default.useGUID) {
+                if (_SettingUseGUID) {
                     xQuery = _almc.Query(@"defects?fields=id,name,status,summary,severity,owner,target-rel,last-modified," +
-                        Properties.Settings.Default.GUIDFieldName + "&query={owner['" +
-                        tb_LoginName.Text + "']; status[NOT Closed]}");
+                        _SettingGUIDDefectField + "&" + _query);
                 }
                 else
                 {
-                    xQuery = _almc.Query(@"defects?fields=id,name,status,summary,severity,owner,target-rel,last-modified&query={owner['" +
-                        tb_LoginName.Text + "']; status[NOT Closed]}");
+                    xQuery = _almc.Query(@"defects?fields=id,name,status,summary,severity,owner,target-rel,last-modified&" + _query);
                 }
                 
 
@@ -288,7 +334,7 @@ namespace QCIssuePlugin
                         bug.GetFieldValue("owner"),
                         relDic[bug.GetFieldValue("target-rel")],
                         bug.GetFieldValue("last-modified"),
-                        Properties.Settings.Default.useGUID ? bug.GetFieldValue(Properties.Settings.Default.GUIDFieldName) : ""
+                        _SettingUseGUID ? bug.GetFieldValue(_SettingGUIDDefectField) : ""
                         ));
                 }
 
@@ -538,6 +584,27 @@ namespace QCIssuePlugin
         private void ckb_AuthAndLogin_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cb_QCFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _query = QueryFromDropDown(cb_QCFilter.Text);
+            FetchItems();
+        }
+
+        private string QueryFromDropDown(string sText)
+        {
+            string sQuery = "";
+            switch (sText.Substring(0, 2))
+            {
+                case "1.":
+                    sQuery = "query={owner['" + tb_LoginName.Text + "']; status[NOT Closed]}";
+                    break;
+                case "2.":
+                    sQuery = "query={status[Open]}";
+                    break;
+            }
+            return sQuery;
         }
 
     }

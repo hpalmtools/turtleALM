@@ -276,15 +276,16 @@ namespace QCIssuePlugin
             // 
             // cb_QCFilter
             // 
-            this.cb_QCFilter.Enabled = false;
             this.cb_QCFilter.FormattingEnabled = true;
             this.cb_QCFilter.Items.AddRange(new object[] {
-            "(Default: Owner and not closed)"});
+            "1. Default: Owner and not closed",
+            "2. All - not closed"});
             this.cb_QCFilter.Location = new System.Drawing.Point(91, 155);
             this.cb_QCFilter.Name = "cb_QCFilter";
             this.cb_QCFilter.Size = new System.Drawing.Size(243, 21);
             this.cb_QCFilter.TabIndex = 30;
-            this.cb_QCFilter.Text = "(Default: Owner and not closed)";
+            this.cb_QCFilter.Text = "1. Default: Owner and not closed";
+            this.cb_QCFilter.SelectedIndexChanged += new System.EventHandler(this.cb_QCFilter_SelectedIndexChanged);
             // 
             // QCIssuesForm
             // 
