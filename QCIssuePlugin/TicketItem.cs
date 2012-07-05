@@ -27,7 +27,7 @@ namespace QCIssuePlugin
 {
     public class TicketItem
     {
-        private readonly string _ticketContext; 
+        private readonly string _ticketDomainProject; 
         private readonly int _ticketNumber;
         private readonly string _ticketStatus;
         private readonly string _ticketSummary;
@@ -37,9 +37,9 @@ namespace QCIssuePlugin
         private readonly string _ticketGUID;
 
 
-        public TicketItem(string ticketContext, int ticketNumber, string ticketStatus, string ticketSummary, string ticketOwner, string ticketTargetRel, string ticketLastModified, string ticketGUID)
+        public TicketItem(string ticketDomainProject, int ticketNumber, string ticketStatus, string ticketSummary, string ticketOwner, string ticketTargetRel, string ticketLastModified, string ticketGUID)
         {
-            _ticketContext = ticketContext;
+            _ticketDomainProject = ticketDomainProject;
             _ticketNumber = ticketNumber;
             _ticketStatus = ticketStatus;
             _ticketSummary = ticketSummary;
@@ -49,9 +49,9 @@ namespace QCIssuePlugin
             _ticketGUID = ticketGUID;
         }
 
-        public string Context
+        public string DomainProject
         {
-            get { return _ticketContext; }
+            get { return _ticketDomainProject; }
         }
 
         public int Number
