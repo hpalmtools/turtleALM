@@ -4,12 +4,15 @@
   - ID only
   - ID - Summary
 - Save the connection - do not disconnect, between check-ins. This is to have a faster check-in time in the case of multiple check-ins
+- Offline mode: save ALM defects locally: only fetch the one which have changed
 - Check QC/ALM version: must be 11 or later, with REST API support
-- Warn if authentication is not over https as authentication is HTTP Basic
 - If domain/project/user/pass populated: auth and get the list immediately
-- If not authenticated, don't do anything
 
 DONE
+- Default must work out of the box, and have ALI format
+- Remove duplicates when changing the filter for the same project, or refreshin several times on the same project
+- Warn if authentication is not over https as authentication is HTTP Basic
+- Fix version update check
 - Fix config file which is not read when modified by the user - move to registry
 - Add target release to the list of fields retrieved
 - Create 32bits installer

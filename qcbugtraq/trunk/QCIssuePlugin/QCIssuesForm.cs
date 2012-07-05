@@ -40,7 +40,7 @@ namespace QCIssuePlugin
         private readonly List<TicketItem> _ticketsAffected = new List<TicketItem>();
         private ListViewColumnSorter lvwColumnSorter;
 
-        const string VERSION = "20120701";
+        const long VERSION = 20120705;
         const string DOWNLOAD_LINK = "https://sourceforge.net/projects/almtools/files/TurtleALM/";
         const string VERSION_URI = "http://almtools.sourceforge.net/turtlealm-latest.txt";
 
@@ -49,9 +49,9 @@ namespace QCIssuePlugin
         private string _query = "";
 
         // All default settings
-        public string _SettingDefectPrefix = "ALMCR";
-        public string _SettingReqPrefix = "ALMRQ";
-        public string _SettingVerb = "Fixing";
+        public string _SettingDefectPrefix = "defect";
+        public string _SettingReqPrefix = "requirement";
+        public string _SettingVerb = "fixing";
         public bool _SettingUseGUID = false;
         public string _SettingGUIDDefectField = "user-template-04";
         public string _SettingGUIDReqField = "user-template-05";
@@ -75,12 +75,12 @@ namespace QCIssuePlugin
             bool bGroupFound = false;
             foreach (ListViewGroup group in lv_QCIssues.Groups)
             {
-                if (group.Name == ticket.Context)
+                if (group.Name == ticket.DomainProject)
                     bGroupFound = true;
             }
             if (!bGroupFound)
             {
-                lv_QCIssues.Groups.Add(ticket.Context, ticket.Context);
+                lv_QCIssues.Groups.Add(ticket.DomainProject, ticket.DomainProject);
             }
             // Add a ticket with all its attributes
             ListViewItem lvi = new ListViewItem();
@@ -94,7 +94,7 @@ namespace QCIssuePlugin
             lvi.SubItems.Add(ticket.LastModified);
             lvi.SubItems.Add(ticket.TargetRel);
             lvi.SubItems.Add(ticket.Owner);
-            lvi.Group = lv_QCIssues.Groups[ticket.Context];
+            lvi.Group = lv_QCIssues.Groups[ticket.DomainProject];
             lvi.Tag = ticket;
 
             lv_QCIssues.Items.Add(lvi);
@@ -114,18 +114,23 @@ namespace QCIssuePlugin
                 if (String.Compare(strLastCheck, DateTime.Now.AddDays(-7).ToString("yyyyMMdd")) < 0)
                 {
                     // We checked more than 7 days ago: check again
-                    string strVersion = getLatestVersion(VERSION_URI);
+                    long webVersion;
+                    string strVersionMessage = getLatestVersion(VERSION_URI, out webVersion);
                     RegistrySet("LastVersionCheck", DateTime.Now.ToString("yyyyMMdd"));
 
-                    if ((!strVersion.Contains("ERROR")) && (String.Compare(strVersion, VERSION) > 0))
+                    if ((!strVersionMessage.Contains("ERROR")) && (webVersion > VERSION))
                     {
-                        if ((MessageBox.Show("There is a new version of TurtleALM.\r\nCurrent version: " + VERSION +
-                            ". Latest version: " + strVersion +
+                        if ((MessageBox.Show("There is a new version of TurtleALM.\r\nCurrent version: " + VERSION.ToString() +
+                            ". Latest version: " + webVersion.ToString() +
                             ".\r\nDo you want to download the latest version?",
                             "Version outdated", MessageBoxButtons.YesNo) == DialogResult.Yes))
                         {
                             System.Diagnostics.Process.Start(DOWNLOAD_LINK);
                         }
+                    }
+                    else
+                    {
+                        // Silently ignore
                     }
                 }
             }
@@ -241,12 +246,13 @@ namespace QCIssuePlugin
 
         }
 
-        private string getLatestVersion(string strUrl)
+        private string getLatestVersion(string strUrl, out long result)
         {
             // Check if an update of the tool is available
             Cursor.Current = Cursors.WaitCursor;
             System.Net.WebClient wc = new System.Net.WebClient();
             string myVersion;
+            result = 0;
             try
             {
                 wc.Credentials = System.Net.CredentialCache.DefaultCredentials;
@@ -255,7 +261,8 @@ namespace QCIssuePlugin
                 System.IO.StreamReader sr = new System.IO.StreamReader(str);
                 myVersion = sr.ReadToEnd();
                 sr.Close();
-                return myVersion;
+                long.TryParse(myVersion, out result);
+                return "";
             }
             catch (Exception ex)
             {
@@ -293,7 +300,26 @@ namespace QCIssuePlugin
                 _almc.Project = cb_Project.Text;
 
                 Cursor.Current = Cursors.WaitCursor;
+                // Clear all the tickets already fetched for the project
+                var selectedTi = new List<TicketItem>(); 
+                foreach (TicketItem ti in QCIssuePlugin.QCPlugin.tickets)
+                {
+                    if (ti.DomainProject == cb_Domain.Text + ":" + cb_Project.Text)
+                        selectedTi.Add(ti);
+                }
+                foreach (TicketItem ti in selectedTi)
+                    QCIssuePlugin.QCPlugin.tickets.Remove(ti);
 
+                // Clear all list view items already fetched for the project
+                var selectedLvi = new List<ListViewItem>();
+                foreach (ListViewItem lvi in lv_QCIssues.Items)
+                {
+                    if (lvi.Group.Name == cb_Domain.Text + ":" + cb_Project.Text)
+                        selectedLvi.Add(lvi);
+                }
+                foreach (ListViewItem lvi in selectedLvi)
+                    lv_QCIssues.Items.Remove(lvi);
+            
                 if (!_almc.SessionOpened)
                     _almc.OpenSession();
 
@@ -473,25 +499,16 @@ namespace QCIssuePlugin
                 }
 
                 if (!_almc.SessionOpened)
-                {
                     _almc.OpenSession();
-                }
-
 
                 foreach (string domain in _almc.GetDomainOrProject(true))
-                {
                     cb_Domain.Items.Add(domain);
-                }
 
                 // Get last domain used from registry
                 if (RegistryGet("QCDomain") != "")
-                {
                     cb_Domain.Text = RegistryGet("QCDomain");
-                }
                 else 
-                {
                     cb_Domain.Text = cb_Domain.Items[0].ToString();
-                }
                 _almc.Domain = cb_Domain.Text;
 
                 
@@ -605,6 +622,27 @@ namespace QCIssuePlugin
                     break;
             }
             return sQuery;
+        }
+
+        private void cb_QCURL_TextChanged(object sender, EventArgs e)
+        {
+            // Change background color of the URL
+            // Green: OK, Yellow: no https, Red: bad format
+            if (Regex.Matches(cb_QCURL.Text, @"https://(.+?)(:\d+)?/qcbin$").Count == 1)
+            {
+                cb_QCURL.BackColor = Color.LightGreen;
+                toolTip1.SetToolTip(cb_QCURL, "QC/ALM URL (ends with qcbin)");
+            }
+            else if (Regex.Matches(cb_QCURL.Text, @"http://(.+?)(:\d+)?/qcbin$").Count == 1)
+            {
+                cb_QCURL.BackColor = Color.Orange;
+                toolTip1.SetToolTip(cb_QCURL, "Prefer https if configured");
+            }
+            else
+            {
+                cb_QCURL.BackColor = Color.Tomato;
+                toolTip1.SetToolTip(cb_QCURL, "QC/ALM URL (ends with qcbin)");
+            }
         }
 
     }

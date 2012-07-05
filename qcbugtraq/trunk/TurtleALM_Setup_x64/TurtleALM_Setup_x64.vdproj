@@ -82,10 +82,10 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
                     {
-                    "Name" = "8:Microsoft .NET Framework 4 (x86 and x64)"
-                    "ProductCode" = "8:.NETFramework,Version=v4.0"
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
                     }
                     "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
                     {
@@ -307,15 +307,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:TurtleALM"
-        "ProductCode" = "8:{FB79D007-95E5-47C3-BB28-6B09B78C5F44}"
-        "PackageCode" = "8:{A6FEDDB8-F948-46D8-B64B-7AFAFB246204}"
+        "ProductCode" = "8:{19BB4668-99EE-46C8-AED2-613AF1070B9C}"
+        "PackageCode" = "8:{EE785F83-5E60-4DEB-92C4-BF3762309A61}"
         "UpgradeCode" = "8:{CA1D5322-C7E5-4897-9638-117F1CF0273F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.4"
+        "ProductVersion" = "8:1.0.6"
         "Manufacturer" = "8:ALMTools"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://almtools.sourceforge.net/"
@@ -1143,7 +1143,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A81F72AC833E4EAEAD35B0955682E47C"
             {
-            "SourcePath" = "8:..\\QCIssuePlugin\\obj\\Release\\TurtleALM.dll"
+            "SourcePath" = "8:..\\QCIssuePlugin\\obj\\Debug\\TurtleALM.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_161ADADAFDB749739852F5AE07D7C52F"

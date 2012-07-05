@@ -115,6 +115,7 @@ namespace QCIssuePlugin
             this.cb_QCURL.Size = new System.Drawing.Size(243, 21);
             this.cb_QCURL.TabIndex = 1;
             this.toolTip1.SetToolTip(this.cb_QCURL, "http[s]://[QCHost]:[port]/qcbin");
+            this.cb_QCURL.TextChanged += new System.EventHandler(this.cb_QCURL_TextChanged);
             // 
             // label5
             // 
@@ -264,6 +265,13 @@ namespace QCIssuePlugin
             this.toolTip1.SetToolTip(this.ckb_AuthAndLogin, "Select to authenticate and login to the last used QC project in one click.");
             this.ckb_AuthAndLogin.UseVisualStyleBackColor = true;
             this.ckb_AuthAndLogin.CheckedChanged += new System.EventHandler(this.ckb_AuthAndLogin_CheckedChanged);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutoPopDelay = 15000;
+            this.toolTip1.InitialDelay = 500;
+            this.toolTip1.ReshowDelay = 100;
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
             // label6
             // 
