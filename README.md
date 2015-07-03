@@ -1,5 +1,7 @@
 # turtleALM
 
+![TurtleALM plugin](/img/Select-QC-Items.png)
+
 ## Purpose
 TurtleALM is an Issue Tracker plugin for TortoiseSVN, TortoiseGIT, TortoiseCVS and TortoiseHG in support of [HP ALM](http://hp.com/go/alm)
 
@@ -12,12 +14,19 @@ TurtleALM works with HP ALM11 onward (leverages the ALM REST API). There is no n
 ## Download
 Download TurtleALM installer [here]().
 
+## Install
+Use the MSI installer.
+
+![Install TurtleALM](/img/TurtleALM-install.png)
+
 ## Configure
 Tortoise configuration
 The installer adds TurtleALM as a plugin for TortoiseSVN automatically. There is only 
 one configuration item in Tortoise: the path. This path entry indicates which plugin 
 to use for which directory. If your source code is on C:\ drive, you need to put "C:\". 
 Refer to the Tortoise manual for more details.
+
+![Configure TurtleALM](/img/TurtleALM-Config.png)
 
 ## TurtleALM configuration
 In addition, TurtleALM uses the Windows registry to customize its configuration. 
@@ -42,8 +51,9 @@ Default: False
 * GUIDReqField: name of the field to be used as GUID (global unique ID) field. Example: "user-23"
 
 # Use
-From the commit window, click “choose QC/ALM item” button.
+From the commit window, click "choose QC/ALM item" button.
 
+![Install TurtleALM](/img/TurtleALM-button.jpg)
 
 
 From there, connect to your ALM project. TurtleALM will list all defects that are not closed and assigned to you. Choose the one which pertains to this code change. You can select several items, from several projects. Click
@@ -51,11 +61,11 @@ From there, connect to your ALM project. TurtleALM will list all defects that ar
 
 on the column headers to sort the items.
 
+![Install TurtleALM](/img/Select-QC-Items.png)
 
+Click "OK" to have the commit message added automatically for you.
 
-Click “OK” to have the commit message added automatically for you.
-
-
+![Install TurtleALM](/img/TurtleALM-Message.png)
 
 # FAQ
 * Q: Why did you named it "TurtleALM"?
