@@ -12,7 +12,7 @@ TurtleALM is implemented as a Bugtraq provider for TortoiseSVN/CVS/GIT/HG. It ha
 TurtleALM works with HP ALM11 onward (leverages the ALM REST API). There is no need for the ALM OTA connectivity add-in.
 
 ## Download
-Download TurtleALM installer [here]().
+Download TurtleALM installer [here](https://github.com/hpalmtools/turtleALM/releases).
 
 ## Install
 Use the MSI installer.
